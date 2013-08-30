@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   validates :email, uniqueness: true
-  validates :name, presence: true
   validates :email, presence: true
   validates :name, presence: true
   have_many :posts
