@@ -1,0 +1,35 @@
+<h1>Listing users</h1>
+  <ul>
+    <% @users.each do |user| %>
+      <li>
+        <a href="#" id="user_<%=user.id%>"><%= user.name %></a>
+        <ul id="usner_<%=user.id%>_info">
+          <li>email: <%= user.email %></li>
+          <li>adress: <%= user.adress %></li>
+          <li>phone# <%= user.phone_number %></li>
+          <li>github: <%= user.github_id %></li>
+          <li>twiter: <%= user.twiter_id %></li>
+          <li>fb: <%= user.fb_id %></li>
+          <li><%= link_to 'Show', user %></li>
+          <% if current_user.present? && current_user == user %>
+            <li><%= link_to 'Edit', edit_user_path(user) %></li>
+            <li><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+<br>
+
+<script>
+<% @users.each do |user| %>
+$("#usner_<%=user.id%>_info").slideUp(0);
+$("#user_<%=user.id%>").click(function() {
+    $("#usner_<%=user.id%>_info").slideToggle();
+     return false;
+  });
+<% end %>
+</script>
+
+<%= link_to 'New User', new_user_path %>
+
