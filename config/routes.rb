@@ -1,5 +1,7 @@
 TSLAlumni::Application.routes.draw do
 
+  resources :posts
+
   root 'users#index'
 
   get '/session/new', controller: 'sessions', action: 'new', as: 'new_session'
