@@ -1,5 +1,7 @@
 TSLAlumni::Application.routes.draw do
 
+  resources :coments
+
   resources :posts
 
   root 'users#index'
