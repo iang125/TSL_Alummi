@@ -1,0 +1,31 @@
+<h1>Listing alumnis</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tsl key</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @alumnis.each do |alumni| %>
+      <tr>
+        <td><%= alumni.tsl_key %></td>
+        <td><%= alumni.first_name %></td>
+        <td><%= alumni.last_name %></td>
+        <td><%= link_to 'Show', alumni %></td>
+        <td><%= link_to 'Edit', edit_alumni_path(alumni) %></td>
+        <td><%= link_to 'Destroy', alumni, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Alumni', new_alumni_path %>

@@ -11,16 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130826181328) do
+ActiveRecord::Schema.define(version: 20130830182302) do
+
+  create_table "alumnis", force: true do |t|
+    t.string   "tsl_key"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "coments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "coment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "coment_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
     t.integer  "class_id"
     t.string   "email"
     t.string   "password_digest"
     t.string   "adress"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "tsl_key"
     t.string   "phone_number"
     t.string   "github_id"
     t.string   "twiter_id"
