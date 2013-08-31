@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require "open-uri"
+
 50.times do |number|
   begin
     url = "http://portal.starterleague.com/courses/#{number}.json"
@@ -17,11 +18,14 @@ require "open-uri"
     tsl_alumnis = []
   end
   tsl_alumnis.each do |tsl_alumni|
-    puts "#{tsl_alumni}"
-    alumni = Alumni.new
+    alumni = User.new
     alumni.tsl_key = SecureRandom.uuid
+    alumni.password = alumni.tsl_key
+    alumni.password_confirmation = alumni.tsl_key
     alumni.first_name = tsl_alumni['first_name']
     alumni.last_name = tsl_alumni['last_name']
-    puts alumni.save
+    alumni.github_id = tsl_alumni['github']
+    alumni.twiter_id = tsl_alumni['twitter']
+    puts "#{alumni.save}:  #{alumni.first_name}  #{alumni.last_name}"
   end
 end

@@ -11,15 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130830182302) do
-
-  create_table "alumnis", force: true do |t|
-    t.string   "tsl_key"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20130830165721) do
 
   create_table "coments", force: true do |t|
     t.integer  "user_id"

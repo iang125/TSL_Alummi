@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  validates :first_name, uniqueness: { scope: :last_name }
   # validates :email, uniqueness: true
   # validates :email, presence: true
 
