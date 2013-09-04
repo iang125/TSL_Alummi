@@ -1,4 +1,5 @@
-<h1>Listing users</h1>
+<h1>TSL Alummni</h1>
+<div id="alummni">
   <ul>
     <% @users.each do |user| %>
       <li>
@@ -19,7 +20,11 @@
       </li>
     <% end %>
   </ul>
-<br>
+</div>
+
+<div class="map">
+<%= gmaps4rails(@json) %>
+</div>
 
 <script>
 <% @users.each do |user| %>

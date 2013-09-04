@@ -19,9 +19,9 @@ require "open-uri"
   end
   tsl_alumnis.each do |tsl_alumni|
     alumni = User.new
-    alumni.tsl_key = SecureRandom.uuid
-    alumni.password = alumni.tsl_key
-    alumni.password_confirmation = alumni.tsl_key
+    alumni.user_name = SecureRandom.uuid
+    alumni.password = alumni.user_name
+    alumni.password_confirmation = alumni.user_name
     alumni.first_name = tsl_alumni['first_name']
     alumni.last_name = tsl_alumni['last_name']
     alumni.github_id = tsl_alumni['github']

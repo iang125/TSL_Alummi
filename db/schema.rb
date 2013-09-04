@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20130830165721) do
     t.string   "adress"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "tsl_key"
+    t.string   "user_name"
     t.string   "phone_number"
     t.string   "github_id"
     t.string   "twiter_id"

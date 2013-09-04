@@ -3,15 +3,28 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by email: params[:username]
 
-    if @user.present? && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      flash[:notice] = 'Signed in successfully.'
-      redirect_to root_url
+    if params[:registration_key].present?
+      @user = User.find_by user_name: params[:registration_key]
+      if @user.present? && @user.authenticate(params[:registration_key])
+        session[:user_id] = @user.id
+        flash[:notice] = 'Signed in successfully.'
+        redirect_to edit_user_url(@user.id)
+      else
+        flash.now[:error] = 'Something went wrong. Please try again.'
+        render 'new'
+      end
     else
-      flash.now[:error] = 'Something went wrong. Please try again.'
-      render 'new'
+      @user = User.find_by user_name: params[:username]
+
+      if @user.present? && @user.authenticate(params[:password])
+        session[:user_id] = @user.id
+        flash[:notice] = 'Signed in successfully.'
+        redirect_to root_url
+      else
+        flash.now[:error] = 'Something went wrong. Please try again.'
+        render 'new'
+      end
     end
   end
 
