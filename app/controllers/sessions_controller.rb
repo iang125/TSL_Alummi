@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       @user = User.find_by user_name: params[:registration_key]
       if @user.present? && @user.authenticate(params[:registration_key])
         session[:user_id] = @user.id
-        flash[:notice] = 'Signed in successfully.'
+        flash[:notice] = 'registration successful, please update your username and password for security'
         redirect_to edit_user_url(@user.id)
       else
         flash.now[:error] = 'Something went wrong. Please try again.'
