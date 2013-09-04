@@ -4,6 +4,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    @json = User.all.to_gmaps4rails do |user, marker|
+    marker.infowindow render_to_string(:partial => "/users/popup", :locals => { :user => user }) # <-- from Anthony
+    marker.json({ :id => user.id, :location_name => user.location_name })
+    end
+
     @sort_direction = params[:sort] || 'asc'
 
     # { "search_term" => "Apollo 13; DROP TABLE MOVIES;"}
