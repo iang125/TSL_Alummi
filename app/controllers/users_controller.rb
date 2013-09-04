@@ -4,8 +4,23 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    @sort_direction = params[:sort] || 'asc'
 
-    @users = User.all.order(:last_name)
+    # { "search_term" => "Apollo 13; DROP TABLE MOVIES;"}
+    if params[:search_term].present?
+      # SELECT * FROM MOVIES WHERE TITLE LIKE 'Apollo13'; DROP TABLE MOVIES'
+      @users = User.where("last_name LIKE ?", "%#{params[:search_term]}%")
+      @users = @users.order("last_name #{@sort_direction}")
+      @users = @users.page(params[:page]).per(25)
+    else
+      @users = User.order("last_name asc").page(params[:page]).per(25)
+    end
+
+    if @sort_direction == 'asc'
+      @sort_direction = 'desc'
+    else
+      @sort_direction = 'asc'
+    end
   end
 
   # GET /users/1
