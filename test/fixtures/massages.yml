@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user1_id: MyString
+  user2_id: MyString
+  massage: MyString
+
+two:
+  user1_id: MyString
+  user2_id: MyString
+  massage: MyString

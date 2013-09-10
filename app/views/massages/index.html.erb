@@ -1,0 +1,31 @@
+<h1>Listing massages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User1</th>
+      <th>User2</th>
+      <th>Massage</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @massages.each do |massage| %>
+      <tr>
+        <td><%= massage.user1_id %></td>
+        <td><%= massage.user2_id %></td>
+        <td><%= massage.massage %></td>
+        <td><%= link_to 'Show', massage %></td>
+        <td><%= link_to 'Edit', edit_massage_path(massage) %></td>
+        <td><%= link_to 'Destroy', massage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Massage', new_massage_path %>

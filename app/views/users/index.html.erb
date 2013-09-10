@@ -9,7 +9,7 @@
           <li>email: <%= user.email %></li>
           <li>adress: <%= user.adress %></li>
           <li>phone# <%= user.phone_number %></li>
-          <li>github: <%= user.github_id %></li>
+          <li>github:<%= link_to "#{user.github_id}", "https://github.com/#{user.github_id}" %></li>
           <li>twiter: <%= user.twiter_id %></li>
           <li>fb: <%= user.fb_id %></li>
           <li><%= link_to 'Show', user %></li>
@@ -23,9 +23,16 @@
   </ul>
 </div>
 
-<div class="map">
-<%= gmaps4rails(@json) %>
+<div class="posts">
+  <%= render "posts/form" %>
+  <% @posts.each do |post| %>
+      <%=  %>
+      <%= post.content %></br>
+
+  <% end %>
 </div>
+
+
 
 <script>
 <% @users.each do |user| %>
@@ -36,6 +43,4 @@ $("#user_<%=user.id%>").click(function() {
   });
 <% end %>
 </script>
-
-<%= link_to 'New User', new_user_path %>
 

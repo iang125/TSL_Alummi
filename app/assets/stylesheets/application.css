@@ -11,3 +11,9 @@
  *= require_self
  *= require_tree .
  */
+.posts{
+  top: 170px;
+  left: 400px;
+  padding-right: 20px;
+  position: absolute;
+}

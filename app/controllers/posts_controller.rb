@@ -30,9 +30,11 @@ class PostsController < ApplicationController
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render action: 'show', status: :created, location: @post }
+        format.js
       else
         format.html { render action: 'new' }
         format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.js { render js: 'alert("somthing went rong plees try agen");' }
       end
     end
   end
@@ -44,9 +46,11 @@ class PostsController < ApplicationController
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
+        format.js
       else
         format.html { render action: 'edit' }
         format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.js { render js: 'alert("somthing went rong plees try agen");' }
       end
     end
   end
@@ -69,6 +73,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params[:post]
+      params.require(:post).permit(:content,)
     end
 end

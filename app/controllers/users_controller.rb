@@ -8,6 +8,8 @@ class UsersController < ApplicationController
     # marker.infowindow render_to_string(:partial => "/users/popup", :locals => { :user => user }) # <-- from Anthony
     # marker.json({ :id => user.id, :location_name => user.location_name })
     # end
+    @post = Post.new
+    @posts = Post.all
 
     @sort_direction = params[:sort] || 'asc'
 

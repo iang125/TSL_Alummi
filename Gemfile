@@ -1,13 +1,16 @@
 source 'https://rubygems.org'
-
+# malti threding
+gem 'private_pub'
+gem 'thin'
+# geocoding
 gem 'geocoder'
-
 gem 'gmaps4rails'
 
-gem 'twilio-ruby'
-
+gem "github_api"
+# pagenation
 gem 'kaminari'
 
+# development errors
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
@@ -15,9 +18,9 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
-gem 'sqlite3'
+# gem 'sqlite3'
 
-# gem 'pg'
+gem 'pg'
 
 # Gem for Heroku/Rails 4
 # gem 'rails_12factor', group: :production

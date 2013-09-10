@@ -1,5 +1,7 @@
 TSLAlumni::Application.routes.draw do
 
+  resources :massages
+
   resources :alumnis
 
   resources :coments
