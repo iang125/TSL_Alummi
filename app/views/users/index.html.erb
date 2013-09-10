@@ -26,13 +26,12 @@
 <div class="posts">
   <%= render "posts/form" %>
   <% @posts.each do |post| %>
-      <%=  %>
-      <%= post.content %></br>
-
+      <% if post.old? == false %>
+        <%= post.content %>...
+        <%= link_to 'respond', post %></br>
+      <% end %>
   <% end %>
 </div>
-
-
 
 <script>
 <% @users.each do |user| %>
